@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 114.0, 117.0, 638.0, 378.0 ],
+		"rect" : [ 103.0, 128.0, 638.0, 378.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,32 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 128.0, 5.0, 24.0, 24.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 37.0, 24.0, 34.0, 22.0 ],
+					"style" : "",
+					"text" : "gate"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontface" : 1,
 					"id" : "obj-24",
@@ -130,24 +156,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 144.5, 89.571426, 156.0, 47.0 ],
+					"patching_rect" : [ 169.5, 77.0, 156.0, 47.0 ],
 					"style" : "",
 					"text" : "<= Lock patch (cmd. + E), double-click the rtcmix~ object to open & see script.",
 					"textcolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 3,
-					"fontsize" : 20.0,
-					"id" : "obj-13",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 11.5, 9.0, 605.0, 29.0 ],
-					"style" : "",
-					"text" : "1. \"Hello World!\" — A Single Note with the STRUM2 Instrument"
 				}
 
 			}
@@ -159,7 +171,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 144.5, 151.5, 156.0, 74.0 ],
+					"patching_rect" : [ 169.5, 148.5, 156.0, 74.0 ],
 					"style" : "",
 					"text" : "Unlock patch (cmd. + E), then option-click on the rtcmix~ object for documentation (i.e. to see its .maxhelp file).",
 					"textcolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ]
@@ -168,16 +180,15 @@
 			}
 , 			{
 				"box" : 				{
-					"channels" : 1,
 					"id" : "obj-10",
 					"maxclass" : "live.gain~",
-					"numinlets" : 1,
-					"numoutlets" : 4,
+					"numinlets" : 2,
+					"numoutlets" : 5,
 					"orientation" : 1,
-					"outlettype" : [ "signal", "", "float", "list" ],
+					"outlettype" : [ "signal", "signal", "", "float", "list" ],
 					"parameter_enable" : 1,
 					"patching_rect" : [ 42.5, 238.0, 136.0, 41.0 ],
-					"presentation_rect" : [ 0.0, 0.0, 0.0, 41.0 ],
+					"presentation_rect" : [ 0.0, 0.0, 50.0, 41.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_linknames" : 1,
@@ -258,18 +269,25 @@
 					"fontsize" : 28.0,
 					"id" : "obj-1",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "signal", "" ],
-					"patching_rect" : [ 42.5, 89.571426, 100.0, 40.0 ],
-					"save" : [ "#N", "rtcmix~", 1, 0, ";", "#X", "restore", 0, 297, 297, "// STRUM2 Instrument Syntax:\r\n// STRUM2(outsk, dur, AMP, PITCH, squish, decay_time[, PAN])\n// source: http://rtcmix.org/reference/instruments/STRUM2.php\r\n\r\nstarttime = 0// instead of outsk\r\nfor (i = 0; < 10; i = i + 1 ){\r\nSTRUM2(starttime, 3.5, 20000, 443.9, 2, 3.5)\r\nstarttime = starttime + 0.5\n}", ";" ],
+					"numinlets" : 2,
+					"numoutlets" : 3,
+					"outlettype" : [ "signal", "signal", "" ],
+					"patching_rect" : [ 42.5, 89.571426, 125.0, 40.0 ],
+					"save" : [ "#N", "rtcmix~", 2, 0, ";", "#X", "restore", 0, 395, 395, "// STRUM2 Instrument Syntax:\r\n// STRUM2(outsk, dur, AMP, PITCH, squish, decay_time[, PAN])\n// source: http://rtcmix.org/reference/instruments/STRUM2.php\r\n\r\nstarttime = 0 // instead of outsk\r\n\r\nfor (i = 0; i < 10; i = i + 1 ){\r\nrate = irand(0.0, 1.0)\r\nrandomnote = irand( 300,700)\r\nSTRUM2(starttime, 3.5, 20000, randomnote , 2, 3.5, random())\r\nstarttime = starttime + rate\n}\r\n\r\nMAXBANG(starttime)", ";" ],
 					"style" : "",
-					"text" : "rtcmix~"
+					"text" : "rtcmix~ 2"
 				}
 
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 1 ],
+					"source" : [ "obj-1", 1 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-10", 0 ],
 					"source" : [ "obj-1", 0 ]
@@ -278,17 +296,30 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-3", 1 ],
+					"midpoints" : [ 158.0, 141.0, 6.0, 141.0, 6.0, 9.0, 61.5, 9.0 ],
+					"source" : [ "obj-1", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-2", 1 ],
-					"order" : 0,
-					"source" : [ "obj-10", 0 ]
+					"source" : [ "obj-10", 1 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"order" : 1,
 					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-3", 0 ]
 				}
 
 			}
@@ -296,6 +327,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-7", 0 ]
 				}
 
 			}

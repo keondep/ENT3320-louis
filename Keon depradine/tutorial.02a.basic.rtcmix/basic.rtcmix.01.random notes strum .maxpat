@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 114.0, 117.0, 638.0, 378.0 ],
+		"rect" : [ 147.0, 150.0, 638.0, 378.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -262,7 +262,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "" ],
 					"patching_rect" : [ 42.5, 89.571426, 100.0, 40.0 ],
-					"save" : [ "#N", "rtcmix~", 1, 0, ";", "#X", "restore", 0, 297, 297, "// STRUM2 Instrument Syntax:\r\n// STRUM2(outsk, dur, AMP, PITCH, squish, decay_time[, PAN])\n// source: http://rtcmix.org/reference/instruments/STRUM2.php\r\n\r\nstarttime = 0// instead of outsk\r\nfor (i = 0; < 10; i = i + 1 ){\r\nSTRUM2(starttime, 3.5, 20000, 443.9, 2, 3.5)\r\nstarttime = starttime + 0.5\n}", ";" ],
+					"save" : [ "#N", "rtcmix~", 1, 0, ";", "#X", "restore", 0, 304, 304, "// STRUM2 Instrument Syntax:\r\n// STRUM2(outsk, dur, AMP, PITCH, squish, decay_time[, PAN])\n// source: http://rtcmix.org/reference/instruments/STRUM2.php\r\n\r\nstarttime = 0 // instead of outsk\r\n\r\nfor (i = 0; i < 10; i = i + 1 )\r\n{\r\nSTRUM2(starttime, 3.5, 20000, 443.9, 2, 3.5)\r\nstarttime = starttime + 0.5\n}", ";" ],
 					"style" : "",
 					"text" : "rtcmix~"
 				}
